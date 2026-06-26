@@ -1,0 +1,27 @@
+# One-click deploy of the Donor Scout demo to Render (free tier, HTTPS).
+#
+# No secrets required: the demo login + one-click sample data work without any
+# integration keys. GitHub / Anthropic / LinkedIn / email all degrade gracefully
+# when unset, and SEND_MODE stays in safe demo (redirect) mode.
+#
+# Deploy: https://render.com → New → Blueprint → pick this repo (reads this file).
+# Or use the "Deploy to Render" button in the README.
+#
+# Note: the free tier sleeps after ~15 min idle and cold-starts in ~30–60s, and its
+# disk is ephemeral — fine for a demo, since sample data is regenerated on demand.
+services:
+  - type: web
+    name: donor-scout-platform
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true # required in prod — signs the session cookie
+      - key: SECRETS_KEY
+        generateValue: true # required in prod — encrypts per-org IdP secrets at rest

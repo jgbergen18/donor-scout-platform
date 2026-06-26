@@ -1,0 +1,16 @@
+Notes:
+"When exporting your connection data, you may notice that some of the fields such as email address are empty. This is because the member did not allow connections to see their email address."
+
+First Name,Last Name,URL,Email Address,Company,Position,Location,Connected On
+Sarah,Chen,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,Stripe,VP of Engineering,San Francisco,14 Mar 2024
+Michael,Johnson,https://www.linkedin.com/in/jamiebergen/,,Google,Staff Software Engineer,Mountain View,02 Feb 2024
+Emily,Rodriguez,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,OpenAI,Founding Engineer,San Francisco,21 Jan 2024
+David,Kim,https://www.linkedin.com/in/jamiebergen/,,Nvidia,Director of Product,Santa Clara,09 Dec 2023
+Jessica,Williams,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,Meta,Senior Product Manager,New York,17 Nov 2023
+Daniel,Brown,https://www.linkedin.com/in/jamiebergen/,,Snowflake,Solutions Architect,Seattle,03 Oct 2023
+Olivia,Martinez,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,Datadog,Engineering Manager,Boston,28 Sep 2023
+James,Anderson,https://www.linkedin.com/in/jamiebergen/,,Microsoft,Principal Engineer,Redmond,11 Aug 2023
+Sophia,Taylor,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,Coinbase,Founder & CEO,Austin,30 Jul 2023
+Christopher,Lee,https://www.linkedin.com/in/jamiebergen/,,Amazon,Software Development Engineer,Seattle,19 Jun 2023
+Ava,Thompson,https://www.linkedin.com/in/jamiebergen/,jgbergen18@gmail.com,Databricks,CTO,San Francisco,05 May 2023
+Matthew,Garcia,https://www.linkedin.com/in/jamiebergen/,,Riverside Marketing,Account Manager,Chicago,22 Apr 2023

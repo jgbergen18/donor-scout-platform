@@ -1,0 +1,17 @@
+# Keep the build context lean and force a clean, in-image install of the native
+# better-sqlite3 addon (host node_modules are the wrong platform/arch).
+node_modules
+client/node_modules
+client/dist
+data
+*.db
+*.db-*
+.env
+.git
+.gitignore
+npm-debug.log*
+*.xlsx
+*.xls
+# Not needed inside the runtime image.
+test
+docs

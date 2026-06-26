@@ -1,0 +1,49 @@
+# Donor Scout — local containerized run (works against the Colima Docker runtime).
+#
+#   colima start            # provides the Docker daemon on macOS
+#   docker compose up --build
+#   open http://localhost:5000   → "Continue in demo mode"
+#
+# The SQLite database persists in the named volume `scout-data`, so data survives
+# `docker compose down` (use `down -v` to wipe it). See docs/containerization.md.
+
+services:
+  app:
+    build: .
+    image: donor-scout:local
+    ports:
+      - "5000:5000"
+    environment:
+      # IMPORTANT: development (not production) for local HTTP. In production the
+      # session cookie is Secure (HTTPS-only); over http://localhost that would
+      # silently break login. Set NODE_ENV=production only behind TLS / a proxy.
+      NODE_ENV: development
+      PORT: "5000"
+      DATA_DIR: /data
+      # Override these via a local .env file or your shell. Defaults keep the app
+      # runnable out of the box (demo mode); AI/GitHub/LinkedIn stay disabled until
+      # you supply keys (the app degrades gracefully without them).
+      SESSION_SECRET: ${SESSION_SECRET:-dev-only-change-me-in-prod}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # AI cost controls (see .env.example). Per-org sub-budget defaults to the
+      # global cap; lower it on multi-tenant deployments so one org can't 429 all.
+      AI_DAILY_BUDGET_USD: ${AI_DAILY_BUDGET_USD:-5}
+      AI_DAILY_BUDGET_PER_ORG_USD: ${AI_DAILY_BUDGET_PER_ORG_USD:-5}
+      AI_MODEL_TIER: ${AI_MODEL_TIER:-economy}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID:-}
+      LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET:-}
+    volumes:
+      - scout-data:/data
+    restart: unless-stopped
+    # Liveness probe against GET /healthz (no auth, no DB). Mirrors the image's
+    # HEALTHCHECK but is declared here too so `docker compose ps` shows health.
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:'+(process.env.PORT||5000)+'/healthz',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 3s
+      start_period: 10s
+      retries: 3
+
+volumes:
+  scout-data:

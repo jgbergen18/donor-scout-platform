@@ -1,0 +1,44 @@
+{
+  "name": "linkedin-donor-scout",
+  "version": "1.0.0",
+  "description": "LinkedIn Donor Scout with Impact Tracking — Code for Ukraine",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "client": "npm --prefix client run dev",
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "test": "node --test --test-concurrency=1 test/multitenancy.test.js test/scoring.test.js test/regression.test.js test/strategies.test.js test/auth.test.js test/mailer.test.js test/drafts.test.js test/teams.test.js test/account.test.js test/sso.test.js test/reminders.test.js test/analytics.test.js test/onboarding.test.js test/stewardship.test.js test/observability.test.js test/ai-budget.test.js test/ai-budget-spend.test.js test/campaign.test.js test/campaign-agent.test.js test/link-guard.test.js test/orgbrand.test.js test/timesavers.test.js test/donations-ledger.test.js test/l1-autonomy.test.js test/l1-triage.test.js test/l2-brief.test.js test/l2-nightly.test.js test/security.test.js test/schema-indexes.test.js test/ai-degradation.test.js test/sample-data.test.js test/grants-documents.test.js test/grants-ai.test.js test/retention-second-gift.test.js test/retention-second-gift-ai.test.js test/send-guard.test.js test/newsletter.test.js test/newsletter-ai.test.js test/unsubscribe.test.js"
+  },
+  "keywords": [
+    "code-for-ukraine",
+    "linkedin",
+    "donor",
+    "oauth",
+    "github"
+  ],
+  "author": "Code for Ukraine",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^11.5.0",
+    "better-sqlite3-session-store": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-rate-limit": "^8.5.2",
+    "express-session": "^1.18.1",
+    "helmet": "^8.2.0",
+    "openid-client": "^6.8.4",
+    "passport": "^0.7.0",
+    "passport-openidconnect": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Environment / secrets
+.env
+client/.env
+*.local
+
+# Database (created at runtime) — contains donor records
+data/
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# Private donor data — Zeffy payment exports (never commit)
+*.xlsx
+*.xls
+
+# Private LinkedIn data export (never commit)
+JamieLinkData/
+Complete_LinkedInDataExport*/
+Basic_LinkedInDataExport*/
+
+# Build output
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
